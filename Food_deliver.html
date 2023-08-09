@@ -1,58 +1,68 @@
-<?php
-session_start();
 
 
-$conn=mysqli_connect("localhost",'root','','signup_details');
-$name = $_POST["name"];
-$pass = $_POST["pass"];
-$s="select * from signup_dt where name= '$name' and password='$pass'";
-$sq=mysqli_query($conn,$s);
-$num=mysqli_num_rows($sq);
-if($num==1){
-    $row=mysqli_fetch_array($sq);
-    $_SESSION["name"]=$name;
 
-}else{
-    $_SESSION['error-1']="Invalid password";
-    header('location:Food_deliver.php');
- }
- ?>
+
+
 
 <html>
-    <head><title>Login page</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style_proj.css">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tomato-Online best food delivery service</title>
+        <link rel="stylesheet" href="style_proj.css">
         <link href="https://fonts.googleapis.com/css2?family=Arima:wght@500&display=swap" rel="stylesheet">
-        <script src="https://kit.fontawesome.com/1114c28fb2.js" crossorigin="anonymous"></script></head>
-    <body>
-    <div class="container_1">
+        <script src="https://kit.fontawesome.com/1114c28fb2.js" crossorigin="anonymous"></script>
+    </head>
+    <body  >
+        <div class="container_1">
             <div class="navbar">
                 <div class="navbar-s">
                 <img  id="logo" class="logo" src="logo.png">
-                
                 <ol >
-                    <li onclick="open_close_3()" ><a href="#"><i class="fa-brands fa-searchengin"></i> SEARCH</a> </li>
-                    <li><a href="#"><i class="fa-solid fa-percent"></i>OFFERS</a></li>
-                    <li   >
-                    <a class="user-log" href="#"><i class="fa-solid fa-user"></i>  <?php echo"$_SESSION[name]";?>
-                    <div class="user-dropdown" id="user-dropdown"><ol>
-                <li>Profile</li>
-                <li>Orders</li>
-                <li >Help</li>
-            </ol></div></a>
-                   
-                </li>
-                    <li onclick="open_close_2()"><a  href="Food_deliver.php"><i class="fa-solid fa-circle-question"></i> LOG OUT</a></li>
+                    <li><a href="#">HOME</a> </li>
+                    <li><a href="#">ADD RESTAURANT</a></li>
+                    <li  id="login_up" onclick="open_close()"><a href="#">LOGIN</a></li>
+                    <li onclick="open_close_2()"><a  href="#">SIGN UP</a></li>
                 </ol></div>
 
             </div>
-            
-            </div></div>
-            
-            
+            <div class="back-page"  id="login_nav">
+            <div class="login_nav">
+                <form action="http://localhost/ITE_proj/login-page.php" method="post">
+                    <i  id="close-icon" onclick="open_close()" class="fa-solid fa-xmark"></i>
+                    <h2 class="input-element">Login</h2>
+                    <input type="text" name="name" placeholder="Username">
+                    <input type="password" name="pass" placeholder="password">
+                    <button id="login-bt" type="submit">Login</button>
+                </form>
 
+            </div>
         </div>
-        <div class="search_div_2" id="search-div">
+        <div class="back-page-2"  id="signup_nav">
+            <div class="signup_nav">
+                <form action="page-2.php" method="post" name="fs" onsubmit="return validate_form()">
+                    <i  id="close-icon" onclick="open_close_2()" class="fa-solid fa-xmark"></i>
+                    <h2 class="input-element">sign up</h2><span class="al-error"><?php 
+                    if(isset($_SESSION['error'])){
+
+                        echo"$_SESSION[error]";
+                
+                        unset($_SESSION['error']);
+                    }
+                    ;?></span>
+                  <input type="text" onkeyup="v_name()" name="name" placeholder="Username" required><span name="v_name" id='v-name'></span>
+                    <input type="date" name="date"  required>
+                    <input type="email"onkeyup="v_email()" name="email" placeholder="Email" required><span id="v_email"></span>
+                   <input type="tel"  onkeyup="v_phone()" name="phone"placeholder="phone" ><span id="v-phone"></span>
+                  <input type="password" onkeyup="v_pass()" name="password" placeholder="password" required><span id="v-password"></span>
+                    <button id="login-bt" type="submit">Sign up</button><span id="v-submit"></span>
+                </form>
+
+            </div>
+        </div>
+
+            
+        </div>
+        <div class="search_div">
             <form  action="https://www.google.com/search" method="get" class="search_bar" target="_blank">
             <input type="search" class="s_bar" placeholder="Search for restaurant, cuisine or a dish "  >
             <button type="submit" ><img src="search_icon.png"></button>
@@ -107,7 +117,7 @@ if($num==1){
 
 <div class="card-1">
     <div class="icon"><i class="fa-solid fa-angle-down"></i></div>
-    <div class="img"><a href="order-pg-1.php" target="_blank"><img class="r1-imgs" src="images/kfc-card.avif "></a>
+    <div class="img"><a href="#" ><img class="r1-imgs" src="images/kfc-card.avif "></a>
     <div class="off"><p>37% OFF</p> <span>27 min</span></div></div>
 <div class="txt-content-1">
     <p style="font-size: 30px;">KFC</p><p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i>
@@ -117,7 +127,7 @@ if($num==1){
 
 <div class="card-2">
     <div class="icon"><i class="fa-solid fa-angle-down"></i></div>
-    <div class="img"><a href="order-pg-7.php" target="_blank"><img  class="r1-imgs" src="images/burger-king-card.avif "></a>
+    <div class="img"><a href="#"><img  class="r1-imgs" src="images/shawarmw-card.avif "></a>
         <div class="off"><p>45% OFF</p> <span>30 min</span></div></div>
     <div class="txt-content-1">
         <p style="font-size: 30px;">Zawarma </p><p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i>
@@ -128,7 +138,7 @@ if($num==1){
 
 <div class="card-3">
     <div class="icon"><i class="fa-solid fa-angle-down"></i></div>
-    <div class="img"><a href="order-pg-2.php" target="_blank"><img class="r1-imgs" src="images/lassi-card.avif "></a>
+    <div class="img"><a href="#"><img class="r1-imgs" src="images/lassi-card.avif "></a>
         <div class="off"><p>20% OFF</p> <span>35 min</span></div></div>
     <div class="txt-content-1">
         <p style="font-size: 30px;">Lassi shop</p><p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i>
@@ -142,7 +152,7 @@ if($num==1){
 
 <div class="card-1">
     <div class="icon"><i class="fa-solid fa-angle-down"></i></div>
-    <div class="img"><a href="order-pg-4.php" target="_blank"> <img class="r1-imgs" src="images/pizzahut-card.avif"></a>
+    <div class="img"><a href="#"> <img class="r1-imgs" src="images/pizzahut-card.avif"></a>
         <div class="off"><p>30% OFF</p> <span>45 min</span></div></div>
 <div class="txt-content-1">
     <p style="font-size: 30px;">Pizza Hut</p><p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i>
@@ -152,7 +162,7 @@ if($num==1){
 
 <div class="card-2">
     <div class="icon"><i class="fa-solid fa-angle-down"></i></div>
-    <div class="img"><a href="order-pg-6.php" target="_blank"><img  class="r1-imgs" src="images/briyani-card.avif "></a>
+    <div class="img"><a href="#"><img  class="r1-imgs" src="images/briyani-card.avif "></a>
         <div class="off"><p>40% OFF</p> <span>30 min</span></div></div>
     <div class="txt-content-1">
         <p style="font-size: 30px;">YaMohaideen</p><p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i>
@@ -163,7 +173,7 @@ if($num==1){
 
 <div class="card-3">
     <div class="icon"><i class="fa-solid fa-angle-down"></i></div>
-    <div class="img"><a href="order-pg-5.php" target="_blank"><img class="r1-imgs" src="images/choco-card.avif "></a>
+    <div class="img"><a href="#"><img class="r1-imgs" src="images/choco-card.avif "></a>
         <div class="off"><p>42% OFF</p> <span>20 min</span></div></div>
     <div class="txt-content-1">
         <p style="font-size: 30px;">Choco Dream</p><p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i>
@@ -177,7 +187,7 @@ if($num==1){
 
 <div class="card-1">
     <div class="icon"><i class="fa-solid fa-angle-down"></i></div>
-    <div class="img"><a href="#"><img class="r1-imgs" src="images/shawarmw-card.avif "></a>
+    <div class="img"><a href="#"><img class="r1-imgs" src="images/burger-king-card.avif "></a>
         <div class="off"><p>50% OFF</p> <span>33 min</span></div></div>
 <div class="txt-content-1">
     <p style="font-size: 30px;">Burg King</p><p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i>
@@ -297,6 +307,9 @@ if($num==1){
         </div> </div>
         
         <script src="script_proj.js"></script>
+
     </body>
 </html>
 
+
+    
