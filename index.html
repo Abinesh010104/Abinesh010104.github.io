@@ -1,315 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
+  <title>Personal Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-<html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Online food delivery website</title>
-        <link rel="stylesheet" href="style_proj.css">
-        <link href="https://fonts.googleapis.com/css2?family=Arima:wght@500&display=swap" rel="stylesheet">
-        <script src="https://kit.fontawesome.com/1114c28fb2.js" crossorigin="anonymous"></script>
-    </head>
-    <body  >
-        <div class="container_1">
-            <div class="navbar">
-                <div class="navbar-s">
-                <img  id="logo" class="logo" src="logo.png">
-                <ol >
-                    <li><a href="#">HOME</a> </li>
-                    <li><a href="#">ADD RESTAURANT</a></li>
-                    <li  id="login_up" onclick="open_close()"><a href="#">LOGIN</a></li>
-                    <li onclick="open_close_2()"><a  href="#">SIGN UP</a></li>
-                </ol></div>
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/1114c28fb2.js" crossorigin="anonymous"></script>
+</head>
 
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="container">
+
+      <h1><a href="index.html">Abinesh Rajkumar</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> -->
+      <h2>I'm immersed in the <span>world of technology</span>, coding, and cybersecurity. </h2>
+
+      <nav id="navbar" class="navbar ">
+        <ul>
+          <li><a class="nav-link active" href="#header">Home</a></li>
+          <li><a class="nav-link" href="#about">About</a></li>
+          <li><a class="nav-link" href="#skills">Skills</a></li>
+          <li><a class="nav-link" href="#resume">Resume</a></li>
+          <li><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <div class="social-links">
+        <a href="#" class="facebook"><i class=" fa-solid fa-file"></i></a>
+        <a href="#" class="twitter"><i class="fa-brands fa-x-twitter"></i></a>       
+        <a href="#" class="instagram"><i class="fa-brands fa-threads"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/abinesh-r-00a433257/" class="linkedin"><i class="bi bi-linkedin"></i></a>
+      </div>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= About Section ======= -->
+  <section id="about" class="about">
+
+    <!-- ======= About Me ======= -->
+    <div class="about-me container">
+
+      <div class="section-title">
+        <h2>About</h2>
+        <p>Learn more about me</p>
+      </div>
+
+      <div class="row">
+        <!--<div class="col-lg-4" data-aos="fade-right">
+          <img src="assets/img/me.jpg" class="img-fluid" alt="">
+        </div> -->
+        <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+          <h3>ENGINEER</h3>
+          <p class="fst-italic">
+            Hello! I'm Abinesh R, a passionate and dedicated IT student on a journey to explore and conquer the
+ ever-evolving world of technology. With an insatiable curiosity and a love for problem-solving, I find myself naturally drawn to the intricate complexities of the digital realm.
+          </p>
+          <div class="row">
+            <div class="col-lg-6">
+              <ul>
+                <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>1 Jan 2004</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+91 9361332818</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Chennai ,India</span></li>
+              </ul>
             </div>
-            <div class="back-page"  id="login_nav">
-            <div class="login_nav">
-                <form action="http://localhost/ITE_proj/login-page.php" method="post">
-                    <i  id="close-icon" onclick="open_close()" class="fa-solid fa-xmark"></i>
-                    <h2 class="input-element">Login</h2>
-                    <input type="text" name="name" placeholder="Username">
-                    <input type="password" name="pass" placeholder="password">
-                    <button id="login-bt" type="submit">Login</button>
-                </form>
-
+            <div class="col-lg-6">
+              <ul>
+                <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>19</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>B.Tech Information Technology</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>neshabi096@gmail.com</span></li>
+  
+              </ul>
             </div>
-        </div>
-        <div class="back-page-2"  id="signup_nav">
-            <div class="signup_nav">
-                <form action="page-2.php" method="post" name="fs" onsubmit="return validate_form()">
-                    <i  id="close-icon" onclick="open_close_2()" class="fa-solid fa-xmark"></i>
-                    <h2 class="input-element">sign up</h2><span class="al-error"><?php 
-                    if(isset($_SESSION['error'])){
-
-                        echo"$_SESSION[error]";
-                
-                        unset($_SESSION['error']);
-                    }
-                    ;?></span>
-                  <input type="text" onkeyup="v_name()" name="name" placeholder="Username" required><span name="v_name" id='v-name'></span>
-                    <input type="date" name="date"  required>
-                    <input type="email"onkeyup="v_email()" name="email" placeholder="Email" required><span id="v_email"></span>
-                   <input type="tel"  onkeyup="v_phone()" name="phone"placeholder="phone" ><span id="v-phone"></span>
-                  <input type="password" onkeyup="v_pass()" name="password" placeholder="password" required><span id="v-password"></span>
-                    <button id="login-bt" type="submit">Sign up</button><span id="v-submit"></span>
-                </form>
-
-            </div>
-        </div>
-
-            
-        </div>
-        <div class="search_div">
-            <form  action="https://www.google.com/search" method="get" class="search_bar" target="_blank">
-            <input type="search" class="s_bar" placeholder="Search for restaurant, cuisine or a dish "  >
-            <button type="submit" ><img src="search_icon.png"></button>
-        </form>
-        </div>
-
-        <div class="container_2" >
-            <div class="container-s">
-            <div class="container_2-head"><h2>Inspiration for your first order </h2></div>
-            <div class="container_2-img"><img src="images/briyani.avif" >
-            <a href="#"><img src="images/burger.avif" ></a>
-            <a href="#"><img src="images/chicken.jpg" ></a>
-            <a href="#"><img src="images/pizza.avif" ></a>
-            <a href="#"><img src="images/sandwich.avif" ></a>
-            <a href="#"><img src="images/shake.avif" ></a></div>
-            
-        <div class="container_2-foot">
-            <span>Briyani</span>
-            <span>Burger</span>
-            <span>Chicken</span>
-            <span>Pizza</span>
-            <span>Sandwich</span>
-            <span>Shake</span>
-        </div></div></div>
-
-        <div class="container_3">
-            <div class="container-s">
-            <div class="container_3-head">
-                <h2>Top brands for you</h2>
-            </div>
-            <div class="container_3-img">
-                <a  href="#"><img src="images/kfc.png" ></a>
-                <a href="#"><img src="images/mc.avif" ></a>
-                <a href="#"><img src="images/ssbriyani.avif" ></a>
-                <a href="#"><img src="images/pizza_hut.avif" ></a>
-                <a href="#"><img src="images/dominos.avif" ></a></div>
-            <div class="container_3-foot">
-               <span>KFC</span>
-                <span>Mcdonald's</span>
-                <span>SS hyderabad biryani</span>
-                <span>Pizza hut</span>
-                <span>Domino's</span></div>
-        </div></div>
-
-        <div class="row-head-1" >Order food online from anywhere</div>
-
-        <div  class="container-4">
-
-        <div class="container-4-s">
-
-<div class="row-1">
-
-<div class="card-1">
-    <div class="icon"><i class="fa-solid fa-angle-down"></i></div>
-    <div class="img"><a href="#" ><img class="r1-imgs" src="images/kfc-card.avif "></a>
-    <div class="off"><p>37% OFF</p> <span>27 min</span></div></div>
-<div class="txt-content-1">
-    <p style="font-size: 30px;">KFC</p><p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i>
-    </p></div>
-<div class="txt-content-2"><p>Fast Food, Biryani,....</p>
-    <p> ₹200 for one</p></div></div>
-
-<div class="card-2">
-    <div class="icon"><i class="fa-solid fa-angle-down"></i></div>
-    <div class="img"><a href="#"><img  class="r1-imgs" src="images/shawarmw-card.avif "></a>
-        <div class="off"><p>45% OFF</p> <span>30 min</span></div></div>
-    <div class="txt-content-1">
-        <p style="font-size: 30px;">Zawarma </p><p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i>
-        </p></div>
-    <div class="txt-content-2"><p>Fast Food, shawarma,....</p>
-        <p> ₹120 for one</p></div>
-</div>
-
-<div class="card-3">
-    <div class="icon"><i class="fa-solid fa-angle-down"></i></div>
-    <div class="img"><a href="#"><img class="r1-imgs" src="images/lassi-card.avif "></a>
-        <div class="off"><p>20% OFF</p> <span>35 min</span></div></div>
-    <div class="txt-content-1">
-        <p style="font-size: 30px;">Lassi shop</p><p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i>
-        </p></div>
-    <div class="txt-content-2"><p>Fresh lassi,....</p>
-        <p> ₹10 for one</p></div>
-</div>
-
-</div> 
-<div class="row-2">
-
-<div class="card-1">
-    <div class="icon"><i class="fa-solid fa-angle-down"></i></div>
-    <div class="img"><a href="#"> <img class="r1-imgs" src="images/pizzahut-card.avif"></a>
-        <div class="off"><p>30% OFF</p> <span>45 min</span></div></div>
-<div class="txt-content-1">
-    <p style="font-size: 30px;">Pizza Hut</p><p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i>
-    </p></div>
-<div class="txt-content-2"><p>Pizza ,Burger....</p>
-    <p> ₹250 for one</p></div></div>
-
-<div class="card-2">
-    <div class="icon"><i class="fa-solid fa-angle-down"></i></div>
-    <div class="img"><a href="#"><img  class="r1-imgs" src="images/briyani-card.avif "></a>
-        <div class="off"><p>40% OFF</p> <span>30 min</span></div></div>
-    <div class="txt-content-1">
-        <p style="font-size: 30px;">YaMohaideen</p><p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i>
-        </p></div>
-    <div class="txt-content-2"><p>Mutton Biryani,....</p>
-        <p> ₹300 for one</p></div>
-</div>
-
-<div class="card-3">
-    <div class="icon"><i class="fa-solid fa-angle-down"></i></div>
-    <div class="img"><a href="#"><img class="r1-imgs" src="images/choco-card.avif "></a>
-        <div class="off"><p>42% OFF</p> <span>20 min</span></div></div>
-    <div class="txt-content-1">
-        <p style="font-size: 30px;">Choco Dream</p><p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i>
-        </p></div>
-    <div class="txt-content-2"><p>Ice cream,....</p>
-        <p> ₹150 for one</p></div>
-</div>
-
-</div> 
-<div class="row-3">
-
-<div class="card-1">
-    <div class="icon"><i class="fa-solid fa-angle-down"></i></div>
-    <div class="img"><a href="#"><img class="r1-imgs" src="images/burger-king-card.avif "></a>
-        <div class="off"><p>50% OFF</p> <span>33 min</span></div></div>
-<div class="txt-content-1">
-    <p style="font-size: 30px;">Burg King</p><p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i>
-    </p></div>
-<div class="txt-content-2"><p>Burger,....</p>
-    <p> ₹200 for one</p></div></div>
-
-<div class="card-2">
-    <div class="icon"><i class="fa-solid fa-angle-down"></i></div>
-    <div class="img"><a href="#"><img  class="r1-imgs" src="images/ibaco-card.avif "></a>
-        <div class="off"><p>56% OFF</p> <span>56 min</span></div></div>
-    <div class="txt-content-1">
-        <p style="font-size: 30px;">Ibaco</p><p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i>
-        </p></div>
-    <div class="txt-content-2"><p>Ice cream cakes..</p>
-        <p> ₹500 for one</p></div>
-</div>
-
-<div class="card-3">
-    <div class="icon"><i class="fa-solid fa-angle-down"></i></div>
-    <div class="img"><a href="#"><img class="r1-imgs" src="images/oreo-shake-card.avif "></a>
-        <div class="off"><p>50% OFF</p> <span>35 min</span></div></div>
-    <div class="txt-content-1">
-        <p style="font-size: 30px;">Sweat Truth</p><p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i>
-        </p></div>
-    <div class="txt-content-2"><p>Milk shakes,....</p>
-        <p> ₹250 for one</p></div>
-</div>
-
-</div> 
-<div class="row-4">
-
-<div class="card-1">
-    <div class="icon"><i class="fa-solid fa-angle-down"></i></div>
-    <div class="img"><a href="#"><img class="r1-imgs" src="images/brownie-card.avif "></a>
-        <div class="off"><p>46% OFF</p> <span>30 min</span></div></div>
-<div class="txt-content-1">
-    <p style="font-size: 30px;">Brownie</p><p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i>
-    </p></div>
-<div class="txt-content-2"><p>Black brownie,....</p>
-    <p> ₹250 for one</p></div></div>
-
-<div class="card-2">
-    <div class="icon"><i class="fa-solid fa-angle-down"></i></div>
-    <div class="img"><a href="#"><img  class="r1-imgs" src="images/momo-card.avif "></a>
-        <div class="off"><p>30% OFF</p> <span>45 min</span></div></div>
-    <div class="txt-content-1">
-        <p style="font-size: 30px;">Momo shop</p><p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i>
-        </p></div>
-    <div class="txt-content-2"><p>Cakes,....</p>
-        <p> ₹300 for one</p></div>
-</div>
-
-<div class="card-3">
-    <div class="icon"><i class="fa-solid fa-angle-down"></i></div>
-    <div class="img"><a href="#"><img class="r1-imgs" src="images/hungry-town-card.avif "></a>
-        <div class="off"><p>40% OFF</p> <span>30 min</span></div></div>
-    <div class="txt-content-1">
-        <p style="font-size: 30px;">Hurry town</p><p><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i>
-        </p></div>
-    <div class="txt-content-2"><p>Fast Food, Biryani,....</p>
-        <p> ₹200 for one</p></div>
-</div></div>
-
-</div> 
-        </div>    
-        <div class="footer">
-            <div class="footer-s">
-         <div class="f-head"><p>Yummetto</h2></div>   
-         <div class="f-content">
-            <div class="f-col-1">
-                    <p class="head">ABOUT Yumetto</p>
-                    <p>Who we are</p>
-                    <p>Blog</p>
-                    <p>Work with us</p>
-                    <p>Invester Relations</p>
-                    <p>Report Fraud </p>
-            </div>
-            <div class="f-col-2">
-                <p class="head">Yumeeverse</p>
-                <p>Feeding India</p>
-                <p>Hyperpure</p>
-                
-                <p>Yumland </p>
-            </div>
-            <div class="f-col-3">
-                <div class="f-col-3-1">
-                    <p class="head">FOR RESTAURANTS</p>
-                    <p>Partner with us</p>
-                    <p>Apps For You</p>
-                
-                </div>
-                <div class="f-col-3-2">
-                    <p class="head">FOR ENTERPRISES</p>
-                    <p>Yumetto for work</p>
-                   
-                </div>
-
-            </div>
-            <div class="f-col-4">
-                <p class="head">LEARN MORE</p>
-                <p>Privary</p>
-                <p>Security</p>
-                <p>Terms</p>
-                <p>Sitemap</p>
-            </div>
-            <div class="f-col-5">
-                <p class="head">SOCIAL LINKS</p>
-                <p><i class="fa-brands fa-instagram"></i></p>
-                <p><i class="fa-brands fa-twitter"></i></p>
-                <p><i class="fa-brands fa-youtube"></i></p>
-                <p><i class="fa-brands fa-facebook"></i></p>
-            </div> </div> <div class="line"> <p></p></div>
+          </div>
         
-         <div class="f-bottom">By continuing past this page, you agree to our Terms of Service, Cookie Policy, Privacy Policy and Content Policies. 
-            All trademarks are properties of their respective owners. 2008-2022 © Yumettoo™ Ltd. All rights reserved.</div>
-        </div> </div>
-        
-        <script src="script_proj.js"></script>
+        </div>
+      </div>
 
-    </body>
-</html>
-
+    </div><!-- End About Me -->
 
     
+    
+    <!-- ======= Interests ======= -->
+    <div class="interests container">
+
+      <div class="section-title">
+        <h2>Interests</h2>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-3 col-md-4">
+          <div class="icon-box">
+            <i class="fa-solid fa-laptop-code" style="color: #ffbb2c;"></i>
+        
+           
+            <h3>Competitive Programming</h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
+          <div class="icon-box">
+            <i class="fa-brands fa-artstation" style="color: #5578ff;"></i>
+           
+            <h3>Designing</h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
+          <div class="icon-box">
+            <i class="fa-solid fa-volleyball" style="color: #e80368;"></i>
+            
+            <h3>Sports</h3>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
+          <div class="icon-box">
+            <i class="fa-solid fa-microchip" style="color: #e361ff;"></i>
+            
+      
+            <h3>Tech Gadgets</h3>
+          </div>
+        </div>
+       
+      </div>
+
+    </div><!-- End Interests -->  
+
+  </section><!-- End About Section -->
+
+
+ <!-- ======= skills Section ======= -->
+ <section id="skills" class="skills">
+  
+  <div class="container">
+
+    <div class="section-title">
+      <h2>skills</h2>
+      <p>Personality Traits</p>
+    </div>
+
+    <div class="row mt-2">
+
+      <div class="col-md-6 d-flex align-items-stretch">
+        <div class="info-box">
+          <i class="fa fa-solid fa-user"></i>
+          <h3>Problem Solver</h3>
+      
+        </div>
+      </div>
+
+      <div class="col-md-6 mt-4 mt-md-0 d-flex align-items-stretch">
+        <div class="info-box">
+          <i class="fa fa-solid fa-users"></i>
+          <h3>Team Player</h3>
+          
+        </div>
+      </div>
+
+      <div class="col-md-6 mt-4 d-flex align-items-stretch">
+        <div class="info-box">
+          <i class="fa fa-solid fa-user-plus"></i>
+          <h3>Leadership</h3>
+          
+        </div>
+      </div>
+      <div class="col-md-6 mt-4 d-flex align-items-stretch">
+        <div class="info-box">
+          <i class="fa fa-solid fa-shield-halved"></i>
+          <h3>Optimistic</h3>
+          
+        </div>
+      </div>
+    </div>
+
+    
+  </div>
+  <br><br>
+  <!-- Technical skills-->
+  <div class="container">
+
+    <div class="section-title">
+      
+      <p>Technical Skills</p>
+    </div>
+
+    <div class="row mt-2">
+
+      <div class="col-md-6 d-flex align-items-stretch">
+        <div class="info-box">
+          <i class="fa fa-solid fa-c"></i>
+          <h3>C/C++ Programming</h3>
+      
+        </div>
+      </div>
+
+      <div class="col-md-6 mt-4 mt-md-0 d-flex align-items-stretch">
+        <div class="info-box">
+          <i class="fa fa-brands fa-python"></i>
+          <h3>Python</h3>
+          
+        </div>
+      </div>
+
+      <div class="col-md-6 mt-4 d-flex align-items-stretch">
+        <div class="info-box">
+          <i class="fa fa-solid fa-database"></i>
+          <h3>Oracle DB</h3>
+          
+        </div>
+      </div>
+      <div class="col-md-6 mt-4 d-flex align-items-stretch">
+        <div class="info-box">
+          <i class="fa fa-brands fa-bootstrap"></i>
+          <h3>Bootstrap</h3>
+          
+        </div>
+      </div>
+    </div>
+
+    
+  </div>
+ 
+</section><!-- End skills Section -->
+  <!-- ======= Resume Section ======= -->
+  <section id="resume" class="resume">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Resume</h2>
+        <p>Check My Resume</p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+          
+
+          <h3 class="resume-title">EDUCATION</h3>
+          <div class="resume-item">
+            <h4>B.TECH INFORMATION TECHNOLOGY</h4>
+            <h5>2021 - 2025</h5>
+            <p><em>Madras Institute of Technology, Anna University, Chennai.</em></p>
+           
+          </div>
+          <h3 class="resume-title">ACHIEVEMENTS
+          </h3>
+          <div class="resume-item">
+            <h4>HOCKEY STATE LEVEL PARTICIPATION</h4>
+            <h5>2017 - 2018</h5>
+            <p><em> - Conducted by Sports Development Authority of Tamilnadu.</em></p>
+           
+          </div>
+          <div class="resume-item">
+            <h4>C-CODING</h4>
+            <h5>2022 - 2023</h5>
+            <p><em>- Runner up in a solo C coding contest in a National level technical Symposium Prayatna'23
+              conducted by Madras Institute of Technology.
+              </em></p>
+           
+          </div>
+          <div class="resume-item">
+            <h4>DESIGNING</h4>
+            <h5>2022 - 2023</h5>
+            <p><em>- Winner in web designing event in a National level technical Symposium Prayatna'23
+              conducted by Madras Institute of Technology</em></p>
+           
+          </div>
+          
+        </div>
+        <div class="col-lg-6">
+          <h3 class="resume-title">PERSONAL PROJECTS</h3>
+          <div class="resume-item">
+            <h4> Food Delivery website</h4>
+            <h5>06/2022 - 07/2022</h5>
+            <p><em> HTML | CSS |  JavaScript </em></p>
+            <p>
+            <ul>
+              <li>Developed a platform for online food delivery using HTML,CSS and JS.
+              </li>
+              <li> Implemented with login functionality, featuring signup validation.
+               </li>
+              <li> Designed for easy navigation with attractive elements.</li>
+              
+            </ul>
+            </p>
+          </div>
+          <div class="resume-item">
+            <h4>LOAN MANAGEMENT SYSTEM</h4>
+            <h5>11/2022 - 12/2022 </h5>
+            <p><em>MySQL | PHP</em></p>
+            <p>
+            <ul>
+              <li>Interactive and visually appealing dashboards for borrowers and
+                administrators.</li>
+              <li>Comprehensive and intuitive software solution that empowers financial
+                institutions to efficiently manage loan application, approval, disbursement, and
+                repayment processes.</li>
+              
+            </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End Resume Section -->
+
+ 
+  
+
+  <!-- ======= Contact Section ======= -->
+  <section id="contact" class="contact">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>Contact Me</p>
+      </div>
+
+      <div class="row mt-2">
+
+        <div class="col-md-6 d-flex align-items-stretch">
+          <div class="info-box">
+            <i class="bx bx-map"></i>
+            <h3>My Address</h3>
+            <p>Chennai ,India</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 mt-4 mt-md-0 d-flex align-items-stretch">
+          <div class="info-box">
+            <i class="bx bx-share-alt"></i>
+            <h3>Social Profiles</h3>
+            <div class="social-links">
+              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
+              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mt-4 d-flex align-items-stretch">
+          <div class="info-box">
+            <i class="bx bx-envelope"></i>
+            <h3>Email Me</h3>
+            <p>neshabi096@gmail.com</p>
+          </div>
+        </div>
+        <div class="col-md-6 mt-4 d-flex align-items-stretch">
+          <div class="info-box">
+            <i class="bx bx-phone-call"></i>
+            <h3>Call Me</h3>
+            <p>+91 9361332818</p>
+          </div>
+        </div>
+      </div>
+
+      <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+          </div>
+          <div class="col-md-6 form-group mt-3 mt-md-0">
+            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+          </div>
+        </div>
+        <div class="form-group mt-3">
+          <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+        </div>
+        <div class="form-group mt-3">
+          <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+        </div>
+        <div class="my-3">
+          <div class="loading">Loading</div>
+          <div class="error-message"></div>
+          <div class="sent-message">Your message has been sent. Thank you!</div>
+        </div>
+        <div class="text-center"><button type="submit">Send Message</button></div>
+      </form>
+
+    </div>
+  </section><!-- End Contact Section -->
+
+  
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

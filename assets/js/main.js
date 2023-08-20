@@ -1,192 +1,253 @@
-(function(){
-  // Add to Cart Interaction - by CodyHouse.co
-  var cart = document.getElementsByClassName('js-cd-cart');
-  if(cart.length > 0) {
-  	var cartAddBtns = document.getElementsByClassName('js-cd-add-to-cart'),
-  		cartBody = cart[0].getElementsByClassName('cd-cart__body')[0],
-  		cartList = cartBody.getElementsByTagName('ul')[0],
-  		cartListItems = cartList.getElementsByClassName('cd-cart__product'),
-  		cartTotal = cart[0].getElementsByClassName('cd-cart__checkout')[0].getElementsByTagName('span')[0],
-  		cartCount = cart[0].getElementsByClassName('cd-cart__count')[0],
-  		cartCountItems = cartCount.getElementsByTagName('li'),
-  		cartUndo = cart[0].getElementsByClassName('cd-cart__undo')[0],
-  		productId = 0, //this is a placeholder -> use your real product ids instead
-  		cartTimeoutId = false,
-  		animatingQuantity = false;
-		initCartEvents();
+/**
+* Template Name: Personal
+* Updated: Jul 27 2023 with Bootstrap v5.3.1
+* Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
+*/
+(function() {
+  "use strict";
 
-
-		function initCartEvents() {
-			// add products to cart
-			for(var i = 0; i < cartAddBtns.length; i++) {(function(i){
-				cartAddBtns[i].addEventListener('click', addToCart);
-			})(i);}
-
-			// open/close cart
-			cart[0].getElementsByClassName('cd-cart__trigger')[0].addEventListener('click', function(event){
-				event.preventDefault();
-				toggleCart();
-			});
-			
-			cart[0].addEventListener('click', function(event) {
-				if(event.target == cart[0]) { // close cart when clicking on bg layer
-					toggleCart(true);
-				} else if (event.target.closest('.cd-cart__delete-item')) { // remove product from cart
-					event.preventDefault();
-					removeProduct(event.target.closest('.cd-cart__product'));
-				}
-			});
-
-			// update product quantity inside cart
-			cart[0].addEventListener('change', function(event) {
-				if(event.target.tagName.toLowerCase() == 'select') quickUpdateCart();
-			});
-
-			//reinsert product deleted from the cart
-			cartUndo.addEventListener('click', function(event) {
-				if(event.target.tagName.toLowerCase() == 'a') {
-					event.preventDefault();
-					if(cartTimeoutId) clearInterval(cartTimeoutId);
-					// reinsert deleted product
-					var deletedProduct = cartList.getElementsByClassName('cd-cart__product--deleted')[0];
-					Util.addClass(deletedProduct, 'cd-cart__product--undo');
-					deletedProduct.addEventListener('animationend', function cb(){
-						deletedProduct.removeEventListener('animationend', cb);
-						Util.removeClass(deletedProduct, 'cd-cart__product--deleted cd-cart__product--undo');
-						deletedProduct.removeAttribute('style');
-						quickUpdateCart();
-					});
-					Util.removeClass(cartUndo, 'cd-cart__undo--visible');
-				}
-			});
-		};
-
-		function addToCart(event) {
-			event.preventDefault();
-			if(animatingQuantity) return;
-			var cartIsEmpty = Util.hasClass(cart[0], 'cd-cart--empty');
-			//update cart product list
-			addProduct(this);
-			//update number of items 
-			updateCartCount(cartIsEmpty);
-			//update total price
-			updateCartTotal(this.getAttribute('data-price'), true);
-			//show cart
-			Util.removeClass(cart[0], 'cd-cart--empty');
-		};
-
-		function toggleCart(bool) { // toggle cart visibility
-			var cartIsOpen = ( typeof bool === 'undefined' ) ? Util.hasClass(cart[0], 'cd-cart--open') : bool;
-		
-			if( cartIsOpen ) {
-				Util.removeClass(cart[0], 'cd-cart--open');
-				//reset undo
-				if(cartTimeoutId) clearInterval(cartTimeoutId);
-				Util.removeClass(cartUndo, 'cd-cart__undo--visible');
-				removePreviousProduct(); // if a product was deleted, remove it definitively from the cart
-
-				setTimeout(function(){
-					cartBody.scrollTop = 0;
-					//check if cart empty to hide it
-					if( Number(cartCountItems[0].innerText) == 0) Util.addClass(cart[0], 'cd-cart--empty');
-				}, 500);
-			} else {
-				Util.addClass(cart[0], 'cd-cart--open');
-			}
-		};
-
-		function addProduct(target) {
-			// this is just a product placeholder
-			// you should insert an item with the selected product info
-			// replace productId, productName, price and url with your real product info
-			// you should also check if the product was already in the cart -> if it is, just update the quantity
-			productId = productId + 1;
-			var productAdded = '<li class="cd-cart__product"><div class="cd-cart__image"><a href="#0"><img src="images/kfc-img-1-orpg.jpg" alt="placeholder"></a></div><div class="cd-cart__details"><h3 class="truncate"><a href="#0">KFC</a></h3><span class="cd-cart__price">&#x20B9 350</span><div class="cd-cart__actions"><a href="#0" class="cd-cart__delete-item">Delete</a><div class="cd-cart__quantity"><label for="cd-product-'+ productId +'">Qty</label><span class="cd-cart__select"><select class="reset" id="cd-product-'+ productId +'" name="quantity"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select><svg class="icon" viewBox="0 0 12 12"><polyline fill="none" stroke="currentColor" points="2,4 6,8 10,4 "/></svg></span></div></div></div></li>';
-			cartList.insertAdjacentHTML('beforeend', productAdded);
-		};
-
-		function removeProduct(product) {
-			if(cartTimeoutId) clearInterval(cartTimeoutId);
-			removePreviousProduct(); // prduct previously deleted -> definitively remove it from the cart
-			
-			var topPosition = product.offsetTop,
-				productQuantity = Number(product.getElementsByTagName('select')[0].value),
-				productTotPrice = Number((product.getElementsByClassName('cd-cart__price')[0].innerText).replace('$', '')) * productQuantity;
-
-			product.style.top = topPosition+'px';
-			Util.addClass(product, 'cd-cart__product--deleted');
-
-			//update items count + total price
-			updateCartTotal(productTotPrice, false);
-			updateCartCount(true, -productQuantity);
-			Util.addClass(cartUndo, 'cd-cart__undo--visible');
-
-			//wait 8sec before completely remove the item
-			cartTimeoutId = setTimeout(function(){
-				Util.removeClass(cartUndo, 'cd-cart__undo--visible');
-				removePreviousProduct();
-			}, 8000);
-		};
-
-		function removePreviousProduct() { // definitively removed a product from the cart (undo not possible anymore)
-			var deletedProduct = cartList.getElementsByClassName('cd-cart__product--deleted');
-			if(deletedProduct.length > 0 ) deletedProduct[0].remove();
-		};
-
-		function updateCartCount(emptyCart, quantity) {
-			if( typeof quantity === 'undefined' ) {
-				var actual = Number(cartCountItems[0].innerText) + 1;
-				var next = actual + 1;
-				
-				if( emptyCart ) {
-					cartCountItems[0].innerText = actual;
-					cartCountItems[1].innerText = next;
-					animatingQuantity = false;
-				} else {
-					Util.addClass(cartCount, 'cd-cart__count--update');
-
-					setTimeout(function() {
-						cartCountItems[0].innerText = actual;
-					}, 150);
-
-					setTimeout(function() {
-						Util.removeClass(cartCount, 'cd-cart__count--update');
-					}, 200);
-
-					setTimeout(function() {
-						cartCountItems[1].innerText = next;
-						animatingQuantity = false;
-					}, 230);
-				}
-			} else {
-				var actual = Number(cartCountItems[0].innerText) + quantity;
-				var next = actual + 1;
-				
-				cartCountItems[0].innerText = actual;
-				cartCountItems[1].innerText = next;
-				animatingQuantity = false;
-			}
-		};
-
-		function updateCartTotal(price, bool) {
-			cartTotal.innerText = bool ? (Number(cartTotal.innerText) + Number(price)).toFixed(2) : (Number(cartTotal.innerText) - Number(price)).toFixed(2);
-		};
-
-		function quickUpdateCart() {
-			var quantity = 0;
-			var price = 0;
-
-			for(var i = 0; i < cartListItems.length; i++) {
-				if( !Util.hasClass(cartListItems[i], 'cd-cart__product--deleted') ) {
-					var singleQuantity = Number(cartListItems[i].getElementsByTagName('select')[0].value);
-					quantity = quantity + singleQuantity;
-					price = price + singleQuantity*Number((cartListItems[i].getElementsByClassName('cd-cart__price')[0].innerText).replace('$', ''));
-				}
-			}
-
-			cartTotal.innerText = price.toFixed(2);
-			cartCountItems[0].innerText = quantity;
-			cartCountItems[1].innerText = quantity+1;
-		};
+  /**
+   * Easy selector helper function
+   */
+  const select = (el, all = false) => {
+    el = el.trim()
+    if (all) {
+      return [...document.querySelectorAll(el)]
+    } else {
+      return document.querySelector(el)
+    }
   }
-})();
+
+  /**
+   * Easy event listener function
+   */
+  const on = (type, el, listener, all = false) => {
+    let selectEl = select(el, all)
+
+    if (selectEl) {
+      if (all) {
+        selectEl.forEach(e => e.addEventListener(type, listener))
+      } else {
+        selectEl.addEventListener(type, listener)
+      }
+    }
+  }
+
+  /**
+   * Scrolls to an element with header offset
+   */
+  const scrollto = (el) => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
+
+  /**
+   * Mobile nav toggle
+   */
+  on('click', '.mobile-nav-toggle', function(e) {
+    select('#navbar').classList.toggle('navbar-mobile')
+    this.classList.toggle('bi-list')
+    this.classList.toggle('bi-x')
+  })
+
+  /**
+   * Scrool with ofset on links with a class name .scrollto
+   */
+  on('click', '#navbar .nav-link', function(e) {
+    let section = select(this.hash)
+    if (section) {
+      e.preventDefault()
+
+      let navbar = select('#navbar')
+      let header = select('#header')
+      let sections = select('section', true)
+      let navlinks = select('#navbar .nav-link', true)
+
+      navlinks.forEach((item) => {
+        item.classList.remove('active')
+      })
+
+      this.classList.add('active')
+
+      if (navbar.classList.contains('navbar-mobile')) {
+        navbar.classList.remove('navbar-mobile')
+        let navbarToggle = select('.mobile-nav-toggle')
+        navbarToggle.classList.toggle('bi-list')
+        navbarToggle.classList.toggle('bi-x')
+      }
+
+      if (this.hash == '#header') {
+        header.classList.remove('header-top')
+        sections.forEach((item) => {
+          item.classList.remove('section-show')
+        })
+        return;
+      }
+
+      if (!header.classList.contains('header-top')) {
+        header.classList.add('header-top')
+        setTimeout(function() {
+          sections.forEach((item) => {
+            item.classList.remove('section-show')
+          })
+          section.classList.add('section-show')
+
+        }, 350);
+      } else {
+        sections.forEach((item) => {
+          item.classList.remove('section-show')
+        })
+        section.classList.add('section-show')
+      }
+
+      scrollto(this.hash)
+    }
+  }, true)
+
+  /**
+   * Activate/show sections on load with hash links
+   */
+  window.addEventListener('load', () => {
+    if (window.location.hash) {
+      let initial_nav = select(window.location.hash)
+
+      if (initial_nav) {
+        let header = select('#header')
+        let navlinks = select('#navbar .nav-link', true)
+
+        header.classList.add('header-top')
+
+        navlinks.forEach((item) => {
+          if (item.getAttribute('href') == window.location.hash) {
+            item.classList.add('active')
+          } else {
+            item.classList.remove('active')
+          }
+        })
+
+        setTimeout(function() {
+          initial_nav.classList.add('section-show')
+        }, 350);
+
+        scrollto(window.location.hash)
+      }
+    }
+  });
+
+  /**
+   * Skills animation
+   */
+  let skilsContent = select('.skills-content');
+  if (skilsContent) {
+    new Waypoint({
+      element: skilsContent,
+      offset: '80%',
+      handler: function(direction) {
+        let progress = select('.progress .progress-bar', true);
+        progress.forEach((el) => {
+          el.style.width = el.getAttribute('aria-valuenow') + '%'
+        });
+      }
+    })
+  }
+
+  /**
+   * Testimonials slider
+   */
+  new Swiper('.testimonials-slider', {
+    speed: 600,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false
+    },
+    slidesPerView: 'auto',
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 20
+      },
+
+      1200: {
+        slidesPerView: 3,
+        spaceBetween: 20
+      }
+    }
+  });
+
+  /**
+   * Porfolio isotope and filter
+   */
+  window.addEventListener('load', () => {
+    let portfolioContainer = select('.portfolio-container');
+    if (portfolioContainer) {
+      let portfolioIsotope = new Isotope(portfolioContainer, {
+        itemSelector: '.portfolio-item',
+        layoutMode: 'fitRows'
+      });
+
+      let portfolioFilters = select('#portfolio-flters li', true);
+
+      on('click', '#portfolio-flters li', function(e) {
+        e.preventDefault();
+        portfolioFilters.forEach(function(el) {
+          el.classList.remove('filter-active');
+        });
+        this.classList.add('filter-active');
+
+        portfolioIsotope.arrange({
+          filter: this.getAttribute('data-filter')
+        });
+      }, true);
+    }
+
+  });
+
+  /**
+   * Initiate portfolio lightbox 
+   */
+  const portfolioLightbox = GLightbox({
+    selector: '.portfolio-lightbox'
+  });
+
+  /**
+   * Initiate portfolio details lightbox 
+   */
+  const portfolioDetailsLightbox = GLightbox({
+    selector: '.portfolio-details-lightbox',
+    width: '90%',
+    height: '90vh'
+  });
+
+  /**
+   * Portfolio details slider
+   */
+  new Swiper('.portfolio-details-slider', {
+    speed: 400,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true
+    }
+  });
+
+  /**
+   * Initiate Pure Counter 
+   */
+  new PureCounter();
+
+})()
